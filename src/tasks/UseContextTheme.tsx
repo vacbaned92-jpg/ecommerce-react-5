@@ -1,40 +1,27 @@
-import { useState, useEffect, useCallback } from 'react';
-import { ThemeContext, type Theme } from '../context/ThemeContext';
-import ThemeDisplay from './ThemeDisplay';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 
 function UseContextTheme() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem('theme');
-    return saved === 'dark' ? 'dark' : 'light';
-  });
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  }, []);
-
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div
-        style={{
-          backgroundColor: theme === 'light' ? '#ffffffff' : 'black',
-          color: theme === 'light' ? 'black' : '#ffffffff',
-          padding: '20px',
-          border: '1px solid gray',
-          margin: '10px',
-          borderRadius: '8px',
-        }}
-      >
-        <h2>1.1 useContext — Тёмная/светлая тема</h2>
-        <button onClick={toggleTheme}>
-          Переключить тему
-        </button>
-        <ThemeDisplay />
-      </div>
-    </ThemeContext.Provider>
+    <div
+      style={{
+        backgroundColor: theme === 'light' ? '#ffffff' : 'black',
+        color: theme === 'light' ? 'black' : '#ffffff',
+        padding: '20px',
+        border: '1px solid gray',
+        margin: '10px',
+        borderRadius: '8px',
+      }}
+    >
+      <h2>1.1 useContext — Тёмная/светлая тема</h2>
+      <button onClick={toggleTheme}>
+        Переключить тему (сейчас: {theme})
+      </button>
+      <p style={{ marginTop: '10px' }}>
+        Текущая тема: <strong>{theme}</strong>
+      </p>
+    </div>
   );
 }
 export default UseContextTheme;

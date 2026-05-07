@@ -1,6 +1,7 @@
 import UseContextTheme from './tasks/UseContextTheme';
 import UseCallbackCounter from './tasks/UseCallbackCounter';
 import UseMemoSum from './tasks/UseMemoSum';
+import UseRefFocus from './tasks/UseRefFocus';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <UseContextTheme />
       <UseCallbackCounter />
       <UseMemoSum />
+      <UseRefFocus />
     </div>
   );
 }

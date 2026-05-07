@@ -7,6 +7,7 @@ import UseReducerTodo from './tasks/UseReducerTodo';
 import ReactMemoDemo from './tasks/ReactMemoDemo';
 import BonusCombinedHooks from './tasks/BonusCombinedHooks';
 import BadForm from './tasks/BadForm';
+import GoodForm from './tasks/GoodForm';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <ReactMemoDemo />
         <BonusCombinedHooks />
         <BadForm />
+        <GoodForm />
       </div>
     </ThemeProvider>
   );
